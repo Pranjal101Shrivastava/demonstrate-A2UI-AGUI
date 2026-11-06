@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AG-UI Open-ended</title><link rel="stylesheet" href="/common/web/style.css">
+<header class="top"><h1>AG-UI · Open-ended</h1><span class="tag">open-ended</span><a href="/">all examples</a></header>
+<main>
+  <section class="panel">
+    <h2>Model-written HTML (sandboxed)</h2>
+    <form class="ask"><input name="q" value="draw me a custom revenue trend for 7 days"><button>Send</button></form>
+    <div class="msg" id="say"></div><div class="msg" id="progress"></div><div id="ui"></div>
+    <div class="msg" id="actions"></div>
+  </section>
+  <section class="panel"><h2>AG-UI events</h2><pre class="log" id="log"></pre></section>
+</main>
+<script type="module">
+import { readSSE, logTo } from "/common/web/sse.js";
+import { mountSandboxed } from "/common/web/sandbox.js";
+const $ = (id) => document.getElementById(id), log = logTo($("log"));
+
+document.querySelector("form").onsubmit = async (e) => {
+  e.preventDefault(); for (const id of ["log", "say", "progress", "ui"]) $(id).textContent = "";
+  let args = "";
+  for await (const ev of readSSE("api/run", { threadId: "t1", runId: "r" + Date.now(), messages: [{ role: "user", content: e.target.q.value }] })) {
+    log(ev.type, ev.delta ? `(${ev.delta.length} chars)` : (ev.toolCallName || ev.message || ""));
+    if (ev.type === "TEXT_MESSAGE_CONTENT") $("say").textContent += ev.delta;
+    if (ev.type === "TOOL_CALL_ARGS") { args += ev.delta; $("progress").textContent = `receiving HTML… ${args.length} chars`; }
+    if (ev.type === "TOOL_CALL_END") {
+      const { html } = JSON.parse(args);
+      // The ONLY place generated markup goes: an opaque-origin iframe. Only "set_days" is honoured.
+      $("ui").replaceChildren(mountSandboxed(html, { height: 240, allowedActions: ["set_days"],
+        onAction: (a, p) => { $("actions").textContent = `iframe requested ${a}(${JSON.stringify(p)}) -> re-running agent`; e.target.q.value = `draw me a custom revenue trend for ${p.days} days`; document.querySelector("form").requestSubmit(); } }));
+    }
+    if (ev.type === "RUN_ERROR") $("ui").textContent = ev.message;
+  }
+};
+document.querySelector("form").requestSubmit();
+</script>

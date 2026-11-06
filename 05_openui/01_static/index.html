@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenUI Static</title><link rel="stylesheet" href="/common/web/style.css">
+<header class="top"><h1>OpenUI Lang · Static (preset components)</h1><span class="tag">static</span><a href="/">all examples</a></header>
+<main>
+  <section class="panel"><h2>Rendered program</h2>
+    <form class="ask"><input name="q" value="sales card for 5 days"><button>Send</button></form>
+    <div class="msg" id="say"></div><div id="ui"></div></section>
+  <section class="panel"><h2>Parsed statements</h2><pre class="log" id="log"></pre></section>
+</main>
+<script type="module">
+import { setup } from "../page.js";
+import { COMPONENTS as C } from "/common/web/catalog.js";
+const PRESETS = {
+  SalesCard: (p) => C.Card({ title: `Sales - last ${p.days} days` }, [C.Stack({ direction: "row" }, [C.Metric({ label: "Cups", value: p.cups }), C.Metric({ label: "Revenue", value: p.revenue }), C.Metric({ label: "Best day", value: p.best })])]),
+  CupsChart: (p) => C.Card({ title: "Cups per day" }, [C.BarChart(p)]),
+  StockTable: (p) => C.Card({ title: "Stock" }, [C.Table({ columns: ["Item", "Qty"], rows: p.rows })]),
+};
+setup({ sigs: { SalesCard: ["days", "cups", "revenue", "best"], CupsChart: ["labels", "values"], StockTable: ["rows"] }, registry: PRESETS });
+</script>

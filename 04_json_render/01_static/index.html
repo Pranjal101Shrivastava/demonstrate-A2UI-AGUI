@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>json-render Static</title><link rel="stylesheet" href="/common/web/style.css">
+<header class="top"><h1>json-render · Static (preset catalog)</h1><span class="tag">static</span><a href="/">all examples</a></header>
+<main>
+  <section class="panel"><h2>Rendered spec</h2>
+    <form class="ask"><input name="q" value="sales summary for 5 days"><button>Send</button></form>
+    <div class="msg" id="say"></div><div id="ui"></div></section>
+  <section class="panel"><h2>Spec patches + data</h2><pre class="log" id="log"></pre></section>
+</main>
+<script type="module">
+import { setup } from "../page.js";
+import { COMPONENTS } from "/common/web/catalog.js";
+const C = COMPONENTS;
+// The PRESET registry: three prebuilt components, written by the developer.
+const PRESETS = {
+  SalesSummaryCard: ({ $data: d }) => C.Card({ title: `Sales - last ${d.days} days` }, [C.Stack({ direction: "row" }, [
+    C.Metric({ label: "Cups", value: d.total_cups }), C.Metric({ label: "Revenue", value: "$" + d.total_revenue.toFixed(2) }), C.Metric({ label: "Best day", value: d.best_day })])]),
+  DailyCupsChart: ({ $data: d }) => C.Card({ title: "Cups per day" }, [C.BarChart({ labels: d.labels, values: d.cups })]),
+  StockTable: ({ $data: d }) => C.Card({ title: "Stock" }, [C.Table({ columns: ["Item", "Qty"], rows: Object.entries(d.stock) })]),
+};
+setup({ registry: PRESETS });
+</script>

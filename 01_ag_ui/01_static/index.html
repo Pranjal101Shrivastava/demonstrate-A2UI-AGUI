@@ -1,0 +1,48 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AG-UI Static</title><link rel="stylesheet" href="/common/web/style.css">
+<header class="top"><h1>AG-UI · Static</h1><span class="tag">static</span><a href="/">all examples</a></header>
+<main>
+  <section class="panel">
+    <h2>Chat + rendered component</h2>
+    <form class="ask"><input name="q" value="show me sales for the last 5 days"><button>Send</button></form>
+    <div class="msg" id="say"></div>
+    <div id="ui"></div>
+  </section>
+  <section class="panel"><h2>AG-UI event stream</h2><pre class="log" id="log"></pre></section>
+</main>
+<script type="module">
+import { readSSE, logTo } from "/common/web/sse.js";
+import { renderNode } from "/common/web/catalog.js";
+const $ = (id) => document.getElementById(id), log = logTo($("log"));
+
+// STATIC: hand-written components, keyed by tool name. The model can only pick one.
+const FRONTEND_TOOLS = {
+  show_sales_card: (d) => ({ type: "Card", props: { title: `Sales - last ${d.days} days` }, children: [
+    { type: "Stack", props: { direction: "row" }, children: [
+      { type: "Metric", props: { label: "Cups", value: d.total_cups } },
+      { type: "Metric", props: { label: "Revenue", value: "$" + d.total_revenue.toFixed(2) } },
+      { type: "Metric", props: { label: "Best day", value: d.best_day } } ] } ] }),
+  show_sales_chart: (d) => ({ type: "Card", props: { title: "Cups per day" }, children: [{ type: "BarChart", props: { labels: d.labels, values: d.cups } }] }),
+  show_stock_table: (d) => ({ type: "Card", props: { title: "Stock" }, children: [{ type: "Table", props: { columns: ["Item", "Qty"], rows: Object.entries(d.stock) } }] }),
+};
+
+document.querySelector("form").onsubmit = async (e) => {
+  e.preventDefault(); $("log").textContent = ""; $("say").textContent = ""; $("ui").textContent = "";
+  const calls = {};   // toolCallId -> {name, args}
+  const input = { threadId: "t1", runId: "r" + Date.now(), messages: [{ role: "user", content: e.target.q.value }], tools: Object.keys(FRONTEND_TOOLS).map(name => ({ name })), state: {} };
+  for await (const ev of readSSE("api/run", input)) {
+    log(ev.type, Object.fromEntries(Object.entries(ev).filter(([k]) => k !== "type")));
+    switch (ev.type) {
+      case "TEXT_MESSAGE_CONTENT": $("say").textContent += ev.delta; break;
+      case "TOOL_CALL_START": calls[ev.toolCallId] = { name: ev.toolCallName, args: "" }; $("ui").innerHTML = `<div class="pending">rendering ${ev.toolCallName}…</div>`; break;
+      case "TOOL_CALL_ARGS": calls[ev.toolCallId].args += ev.delta; break;
+      case "TOOL_CALL_RESULT": {
+        const c = calls[ev.toolCallId], component = FRONTEND_TOOLS[c.name];
+        $("ui").replaceChildren(component ? renderNode(component(JSON.parse(ev.content))) : "unknown tool");
+        break; }
+      case "RUN_ERROR": $("ui").textContent = "Error: " + ev.message; break;
+    }
+  }
+};
+document.querySelector("form").requestSubmit();
+</script>

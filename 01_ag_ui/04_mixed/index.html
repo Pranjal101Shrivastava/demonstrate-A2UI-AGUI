@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AG-UI Mixed</title><link rel="stylesheet" href="/common/web/style.css">
+<header class="top"><h1>AG-UI · Mixed (catalog + generated region)</h1><span class="tag">mixed</span><a href="/">all examples</a></header>
+<main>
+  <section class="panel">
+    <h2>Hybrid surface</h2>
+    <form class="ask"><input name="q" value="dashboard for 7 days with a custom trend"><button>Send</button></form>
+    <div class="msg" id="say"></div><div id="ui"></div>
+  </section>
+  <section class="panel"><h2>AG-UI events</h2><pre class="log" id="log"></pre></section>
+</main>
+<script type="module">
+import { readSSE, logTo } from "/common/web/sse.js";
+import { renderNode, flatToTree } from "/common/web/catalog.js";
+import { applyPatch } from "/common/web/jsonpatch.js";
+const $ = (id) => document.getElementById(id), log = logTo($("log"));
+let state = {}, lastHtml = null, frameEl = null;
+
+function render() {
+  if (!state.ui) return;
+  // Keep the iframe if its HTML did not change, so patches elsewhere don't reload it.
+  const html = state.ui.elements.custom?.props?.html;
+  const tree = renderNode(flatToTree(state.ui), act);
+  if (html === lastHtml && frameEl) tree.querySelector("iframe")?.replaceWith(frameEl);
+  else { frameEl = tree.querySelector("iframe"); lastHtml = html; }
+  $("ui").replaceChildren(tree);
+}
+async function runAgent(input) {
+  $("say").textContent = "";
+  for await (const ev of readSSE("api/run", { threadId: "t1", runId: "r" + Date.now(), state, messages: [], ...input })) {
+    log(ev.type, ev.delta || ev.message || (ev.snapshot ? "(snapshot)" : ""));
+    if (ev.type === "TEXT_MESSAGE_CONTENT") $("say").textContent += ev.delta;
+    if (ev.type === "STATE_SNAPSHOT") { state = ev.snapshot; render(); }
+    if (ev.type === "STATE_DELTA") { state = applyPatch(state, ev.delta); render(); }
+    if (ev.type === "RUN_ERROR") $("say").textContent = "Error: " + ev.message;
+  }
+}
+// Buttons (catalog) and genux.action() (sandboxed iframe) both land here -> a new AG-UI run.
+const act = (name, params) => { log("--- user action", { name, params }); runAgent({ forwardedProps: { action: { name, params } } }); };
+document.querySelector("form").onsubmit = (e) => { e.preventDefault(); $("log").textContent = ""; state = {}; lastHtml = null; runAgent({ messages: [{ role: "user", content: e.target.q.value }] }); };
+document.querySelector("form").requestSubmit();
+</script>

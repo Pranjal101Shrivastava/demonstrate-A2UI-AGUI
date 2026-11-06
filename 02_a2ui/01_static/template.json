@@ -1,0 +1,11 @@
+[
+  {"id": "root", "component": "Card", "title": "Campus Cafe - daily report", "child": "col"},
+  {"id": "col", "component": "Column", "children": ["headline", "kpis", "chart", "note"]},
+  {"id": "headline", "component": "Text", "variant": "h2", "text": {"path": "/report/headline"}},
+  {"id": "kpis", "component": "Row", "children": ["k1", "k2", "k3"]},
+  {"id": "k1", "component": "Metric", "label": "Cups", "value": {"path": "/report/cups"}},
+  {"id": "k2", "component": "Metric", "label": "Revenue", "value": {"path": "/report/revenue"}},
+  {"id": "k3", "component": "Metric", "label": "Best day", "value": {"path": "/report/best"}},
+  {"id": "chart", "component": "BarChart", "labels": {"path": "/report/labels"}, "values": {"path": "/report/series"}},
+  {"id": "note", "component": "Text", "variant": "muted", "text": {"path": "/report/note"}}
+]

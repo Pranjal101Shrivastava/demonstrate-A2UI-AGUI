@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenUI declarative</title><link rel="stylesheet" href="/common/web/style.css">
+<header class="top"><h1>OpenUI Lang · Declarative (streamed, forward refs)</h1><span class="tag">declarative</span><a href="/">all examples</a></header>
+<main>
+  <section class="panel"><h2>Rendered program (parsed in the browser)</h2>
+    <form class="ask"><input name="q" value="dashboard for 5 days"><button>Send</button></form>
+    <div class="msg" id="say"></div><div id="ui"></div></section>
+  <section class="panel"><h2>Statements as they complete</h2><pre class="log" id="log"></pre></section>
+</main>
+<script type="module">import { setup } from "../page.js"; setup({ actionRoute: null });</script>

@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AG-UI Declarative</title><link rel="stylesheet" href="/common/web/style.css">
+<header class="top"><h1>AG-UI · Declarative</h1><span class="tag">declarative</span><a href="/">all examples</a></header>
+<main>
+  <section class="panel">
+    <h2>UI rendered from shared state</h2>
+    <form class="ask"><input name="q" value="build me a dashboard for the last 5 days"><button>Send</button></form>
+    <div class="msg" id="say"></div><div id="ui"></div>
+  </section>
+  <section class="panel"><h2>AG-UI events (state = UI)</h2><pre class="log" id="log"></pre></section>
+</main>
+<script type="module">
+import { readSSE, logTo } from "/common/web/sse.js";
+import { renderNode, flatToTree } from "/common/web/catalog.js";
+import { applyPatch } from "/common/web/jsonpatch.js";
+const $ = (id) => document.getElementById(id), log = logTo($("log"));
+let state = {};
+const render = () => state.ui && $("ui").replaceChildren(renderNode(flatToTree(state.ui), (a, p) => alert(`action ${a} ${JSON.stringify(p)} (wired up in 04_mixed)`)));
+
+document.querySelector("form").onsubmit = async (e) => {
+  e.preventDefault(); $("log").textContent = ""; $("say").textContent = ""; state = {};
+  for await (const ev of readSSE("api/run", { threadId: "t1", runId: "r" + Date.now(), messages: [{ role: "user", content: e.target.q.value }], state })) {
+    log(ev.type, ev.delta || ev.snapshot || ev.message || "");
+    if (ev.type === "TEXT_MESSAGE_CONTENT") $("say").textContent += ev.delta;
+    if (ev.type === "STATE_SNAPSHOT") { state = ev.snapshot; render(); }
+    if (ev.type === "STATE_DELTA") { state = applyPatch(state, ev.delta); render(); }   // re-render after every patch
+    if (ev.type === "RUN_ERROR") $("ui").textContent = ev.message;
+  }
+};
+document.querySelector("form").requestSubmit();
+</script>
