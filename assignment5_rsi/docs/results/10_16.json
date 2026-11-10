@@ -1,0 +1,49 @@
+{
+ "session": [
+  [
+   "sandbox_exec(valid controller)",
+   "ok",
+   "{'ok': True, 'returns': False}"
+  ],
+  [
+   "sandbox_exec('import os ...')",
+   "ok",
+   "{'ok': False, 'error': 'ImportError: __import__ not found'}"
+  ],
+  [
+   "sandbox_exec(no decide())",
+   "ok",
+   "{'ok': False, 'error': 'source does not define decide(s)'}"
+  ],
+  [
+   "simulate(seed, one instance)",
+   "ok",
+   "{'instance': 'stadium_surge#2005', 'family': 'stadium_surge', 'solved'"
+  ],
+  [
+   "simulate(seed, held-out instance)",
+   "REFUSED",
+   "ServiceError: unknown or out-of-boundary instance night_sparse#9006"
+  ],
+  [
+   "evaluate(good, 'fit')",
+   "ok",
+   "16/16 solved"
+  ],
+  [
+   "evaluate(good, 'heldout')",
+   "REFUSED",
+   "PermissionError: split 'heldout' is outside the search boundary"
+  ],
+  [
+   "heldout(good)",
+   "REFUSED",
+   "ServiceError: permission denied: 'final' is not granted to this agent"
+  ],
+  [
+   "evaluate(seed, 'steering') x4",
+   "REFUSED",
+   "BudgetExhausted: needs 48 units, 39 left"
+  ]
+ ]
+}

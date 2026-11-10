@@ -1,0 +1,124 @@
+{
+ "diversity_seed0": [
+  [
+   1,
+   2.36
+  ],
+  [
+   2,
+   2.61
+  ],
+  [
+   3,
+   2.63
+  ],
+  [
+   4,
+   2.63
+  ],
+  [
+   5,
+   2.63
+  ],
+  [
+   6,
+   2.51
+  ],
+  [
+   7,
+   2.51
+  ],
+  [
+   8,
+   2.68
+  ],
+  [
+   9,
+   2.79
+  ],
+  [
+   10,
+   2.79
+  ],
+  [
+   11,
+   2.79
+  ],
+  [
+   12,
+   2.81
+  ]
+ ],
+ "ablations": {
+  "full SwarmRSI": [
+   80,
+   83,
+   81,
+   73,
+   62,
+   81,
+   83,
+   81
+  ],
+  "no shared board": [
+   83,
+   83,
+   83,
+   79,
+   70,
+   83,
+   83,
+   70
+  ],
+  "no recombination": [
+   81,
+   83,
+   81,
+   83,
+   71,
+   81,
+   83,
+   83
+  ],
+  "frozen procedure": [
+   81,
+   80,
+   81,
+   84,
+   64,
+   81,
+   81,
+   83
+  ],
+  "same start for all agents": [
+   81,
+   55,
+   72,
+   68,
+   68,
+   81,
+   75,
+   69
+  ]
+ },
+ "recombinations_seed0": [
+  {
+   "parents": [
+    "responsive",
+    "pressure"
+   ],
+   "complementarity": 0.33,
+   "child_solved": 31,
+   "replaced": "fairness"
+  },
+  {
+   "parents": [
+    "responsivexpressure",
+    "explorer"
+   ],
+   "complementarity": 0.33,
+   "child_solved": 35,
+   "replaced": null
+  }
+ ]
+}

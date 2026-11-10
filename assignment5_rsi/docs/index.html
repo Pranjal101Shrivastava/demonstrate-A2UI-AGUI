@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SignalForge RSI Studio</title><meta name="description" content="Assignment 5: three October 2026 RSI methods rebuilt on a self-improving traffic-signal controller.">
+<style>
+:root{--bg:#f7f7f5;--card:#ffffff;--ink:#1d2025;--mut:#5f6672;--line:#e3e4e8;--acc:#3a63e0;--good:#15885f;--warn:#b0581b;--code:#f0f1f4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111316;--card:#181b20;--ink:#e7e9ee;--mut:#9aa2ae;--line:#2a2f37;--acc:#7f9cff;--good:#4cc79a;--warn:#f0a066;--code:#20242b}}
+:root[data-theme="dark"]{--bg:#111316;--card:#181b20;--ink:#e7e9ee;--mut:#9aa2ae;--line:#2a2f37;--acc:#7f9cff;--good:#4cc79a;--warn:#f0a066;--code:#20242b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:32px 16px 64px}h1{font-size:30px;line-height:1.2;margin:0 0 8px}
+h2{font-size:21px;margin:40px 0 12px}h3{font-size:16px;margin:0 0 6px}.lede{color:var(--mut);max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.card p{margin:6px 0;color:var(--mut);font-size:14.5px}.big{font-size:26px;font-weight:650}.good{color:var(--good)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mut);font-weight:600}
+.scroll{overflow-x:auto}code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:13.5px}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto;font-size:13px}a{color:var(--acc)}
+.fig svg{width:100%;height:auto;display:block}.tag{display:inline-block;font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:1px 8px}
+ul{padding-left:20px}li{margin:4px 0}
+</style></head><body><main>
+<span class="tag">Assignment 5 · Section 10 Research Studio · RSI Masterclass (October 2026 edition)</span>
+<h1>SignalForge: recursive self-improvement of a traffic-signal controller</h1>
+<p class="lede">All 17 codelabs of Section 10, plus a synthesis lab, implemented progressively on one problem. The thing being
+improved is a <b>Python program</b>: the controller that decides, second by second, when a four-way intersection switches its lights.
+Three state-of-the-art RSI methods (<b>Budget RSI</b>, <b>SO-RSI</b> and <b>SwarmRSI</b>) are rebuilt from the course's paper
+summaries and compared under one fair protocol. Everything runs on a laptop CPU with the Python standard library.</p>
+
+<h2>The problem</h2>
+<div class="grid">
+<div class="card"><h3>Environment</h3><p>A queueing simulator: 4 approaches, 2 phases, 2 s saturation headway, 2 s start-up loss, 4 s clearance.
+8 traffic families: light, heavy, N/S- or E/W-dominant, morning ramp, stadium surge, night, platoons.</p></div>
+<div class="card"><h3>Benchmark</h3><p>An instance is <i>solved</i> if average delay ≤ 18 s and no car waits &gt; 70 s.
+Splits: 16 <b>fit</b> · 48 <b>steering</b> · 100 <b>held-out</b>. Search code physically cannot read held-out (enforced and unit-tested).</p></div>
+<div class="card"><h3>Improved object</h3><p>A genome rendered to real Python source with up to five mechanisms (actuated gap-out, max-green cap,
+pressure switching, starvation guard, skip-empty) and their constants. The seed fixed-time plan solves <b>31/100</b>.</p></div>
+<div class="card"><h3>Fair comparison</h3><p>One cost unit = one instance simulation. Every method gets the same total budget.
+Readout labels and diagnostic probes are charged. Results are reported as mean ± sd over seeds.</p></div>
+</div>
+
+<h2>Three RSI methods, head to head</h2>
+<div class="grid">
+<div class="card"><h3>Budget RSI <span class="tag">arXiv:2610.29121</span></h3><div class="big">80.2<span class="tag">/100 held-out</span></div>
+<p>A linear readout on 8 diff coordinates scores edits <i>before running them</i>, and HGM/Thompson selection expands only the top child.
+Recursive variant: the readout refits itself on every expansion (lab 10.05).</p></div>
+<div class="card"><h3>SO-RSI <span class="tag">arXiv:2610.05701</span></h3><div class="big good">96.0<span class="tag">/100 held-out</span></div>
+<p>Watches its own edit trace for recurrence, opposing edits and expectation mismatch, then runs cost-charged diagnostic probes on the failing
+instances and keeps causal findings in inquiry memory.</p></div>
+<div class="card"><h3>SwarmRSI <span class="tag">arXiv:2610.20431</span></h3><div class="big">85.2<span class="tag">/100 held-out</span></div>
+<p>Five agents with different research directions, feedback-guided mutation, complementary recombination, and a swarm procedure
+that evolves its own recombination rate and step size.</p></div>
+</div>
+<p class="lede">Baselines at the same 4,800-unit budget: random search 76.4, Naive (first-order) RSI 69.6.</p>
+<div class="card fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" aria-label="Held-out instances solved (of 100), 4,800-unit budget, mean ± sd over 5 seeds">
+<style>
+.bg{fill:#ffffff}.ax{stroke:#c9ccd3;stroke-width:1}.tx{fill:#2b2f36;font:12px system-ui,sans-serif}
+.mut{fill:#6b7280;font:11px system-ui,sans-serif}.err{stroke:#2b2f36;stroke-width:1.5}
+@media (prefers-color-scheme:dark){.bg{fill:#14161a}.ax{stroke:#3a3f48}.tx{fill:#e6e8ec}.mut{fill:#9aa1ad}.err{stroke:#e6e8ec}}
+</style>
+<rect class="bg" width="720" height="340" rx="8"/>
+<text class="tx" x="56" y="22" font-weight="600">Held-out instances solved (of 100), 4,800-unit budget, mean ± sd over 5 seeds</text>
+<line class="ax" x1="56" x2="704" y1="262.0" y2="262.0"/>
+<text class="mut" x="48" y="266.0" text-anchor="end">0</text>
+<line class="ax" x1="56" x2="704" y1="217.6" y2="217.6"/>
+<text class="mut" x="48" y="221.6" text-anchor="end">20</text>
+<line class="ax" x1="56" x2="704" y1="173.2" y2="173.2"/>
+<text class="mut" x="48" y="177.2" text-anchor="end">40</text>
+<line class="ax" x1="56" x2="704" y1="128.8" y2="128.8"/>
+<text class="mut" x="48" y="132.8" text-anchor="end">60</text>
+<line class="ax" x1="56" x2="704" y1="84.4" y2="84.4"/>
+<text class="mut" x="48" y="88.4" text-anchor="end">80</text>
+<line class="ax" x1="56" x2="704" y1="40.0" y2="40.0"/>
+<text class="mut" x="48" y="44.0" text-anchor="end">100</text>
+<text class="mut" transform="translate(14,151.0) rotate(-90)" text-anchor="middle">held-out solved</text>
+<rect x="76.5" y="193.2" width="67.0" height="68.8" rx="3" fill="#9aa1ad"/>
+<text class="tx" x="110.0" y="187.2" text-anchor="middle">31.0</text>
+<text class="mut" x="110.0" y="278" text-anchor="middle">seed</text>
+<text class="mut" x="110.0" y="291" text-anchor="middle">program</text>
+<rect x="184.5" y="92.4" width="67.0" height="169.6" rx="3" fill="#9aa1ad"/>
+<line class="err" x1="218.0" x2="218.0" y1="103.4" y2="81.3"/>
+<text class="tx" x="218.0" y="75.3" text-anchor="middle">76.4</text>
+<text class="mut" x="218.0" y="278" text-anchor="middle">random</text>
+<text class="mut" x="218.0" y="291" text-anchor="middle">search</text>
+<rect x="292.5" y="107.5" width="67.0" height="154.5" rx="3" fill="#9aa1ad"/>
+<line class="err" x1="326.0" x2="326.0" y1="126.6" y2="88.4"/>
+<text class="tx" x="326.0" y="82.4" text-anchor="middle">69.6</text>
+<text class="mut" x="326.0" y="278" text-anchor="middle">Naive</text>
+<text class="mut" x="326.0" y="291" text-anchor="middle">RSI</text>
+<rect x="400.5" y="84.0" width="67.0" height="178.0" rx="3" fill="#a35bd6"/>
+<line class="err" x1="434.0" x2="434.0" y1="116.9" y2="51.0"/>
+<text class="tx" x="434.0" y="45.0" text-anchor="middle">80.2</text>
+<text class="mut" x="434.0" y="278" text-anchor="middle">Budget</text>
+<text class="mut" x="434.0" y="291" text-anchor="middle">RSI</text>
+<rect x="508.5" y="48.9" width="67.0" height="213.1" rx="3" fill="#d4a017"/>
+<line class="err" x1="542.0" x2="542.0" y1="51.6" y2="46.2"/>
+<text class="tx" x="542.0" y="40.2" text-anchor="middle">96.0</text>
+<text class="mut" x="542.0" y="278" text-anchor="middle">SO-RSI</text>
+<rect x="616.5" y="72.9" width="67.0" height="189.1" rx="3" fill="#d64f7a"/>
+<line class="err" x1="650.0" x2="650.0" y1="96.2" y2="49.5"/>
+<text class="tx" x="650.0" y="43.5" text-anchor="middle">85.2</text>
+<text class="mut" x="650.0" y="278" text-anchor="middle">SwarmRSI</text>
+</svg></div>
+<div class="card fig" style="margin-top:14px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" aria-label="Anytime curve: best steering score vs budget spent (mean of 5 seeds)">
+<style>
+.bg{fill:#ffffff}.ax{stroke:#c9ccd3;stroke-width:1}.tx{fill:#2b2f36;font:12px system-ui,sans-serif}
+.mut{fill:#6b7280;font:11px system-ui,sans-serif}.err{stroke:#2b2f36;stroke-width:1.5}
+@media (prefers-color-scheme:dark){.bg{fill:#14161a}.ax{stroke:#3a3f48}.tx{fill:#e6e8ec}.mut{fill:#9aa1ad}.err{stroke:#e6e8ec}}
+</style>
+<rect class="bg" width="720" height="340" rx="8"/>
+<text class="tx" x="56" y="22" font-weight="600">Anytime curve: best steering score vs budget spent (mean of 5 seeds)</text>
+<line class="ax" x1="56" x2="570" y1="292.0" y2="292.0"/>
+<text class="mut" x="48" y="296.0" text-anchor="end">0</text>
+<line class="ax" x1="56" x2="570" y1="229.0" y2="229.0"/>
+<text class="mut" x="48" y="233.0" text-anchor="end">12</text>
+<line class="ax" x1="56" x2="570" y1="166.0" y2="166.0"/>
+<text class="mut" x="48" y="170.0" text-anchor="end">24</text>
+<line class="ax" x1="56" x2="570" y1="103.0" y2="103.0"/>
+<text class="mut" x="48" y="107.0" text-anchor="end">36</text>
+<line class="ax" x1="56" x2="570" y1="40.0" y2="40.0"/>
+<text class="mut" x="48" y="44.0" text-anchor="end">48</text>
+<text class="mut" x="56.0" y="308" text-anchor="middle">0</text>
+<text class="mut" x="184.5" y="308" text-anchor="middle">1,200</text>
+<text class="mut" x="313.0" y="308" text-anchor="middle">2,400</text>
+<text class="mut" x="441.5" y="308" text-anchor="middle">3,600</text>
+<text class="mut" x="570.0" y="308" text-anchor="middle">4,800</text>
+<text class="mut" x="313.0" y="334" text-anchor="middle">instance-simulations spent</text>
+<text class="mut" transform="translate(14,166.0) rotate(-90)" text-anchor="middle">best steering solved (of 48)</text>
+<path d="M56.0,208.0 L77.4,140.8 L98.8,130.3 L120.2,118.8 L141.7,111.4 L163.1,111.4 L184.5,110.3 L205.9,108.2 L227.3,108.2 L248.8,108.2 L270.2,108.2 L291.6,105.1 L313.0,104.1 L334.4,104.1 L355.8,104.1 L377.2,103.0 L398.7,103.0 L420.1,96.7 L441.5,96.7 L462.9,96.7 L484.3,96.7 L505.8,96.7 L527.2,95.7 L548.6,95.7 L570.0,95.7" fill="none" stroke="#4f7cff" stroke-width="2"/>
+<rect x="582" y="45" width="12" height="3" fill="#4f7cff"/>
+<text class="tx" x="600" y="50">random search</text>
+<path d="M56.0,208.0 L77.4,163.9 L98.8,144.0 L120.2,142.9 L141.7,113.5 L163.1,111.4 L184.5,111.4 L205.9,108.2 L227.3,106.2 L248.8,106.2 L270.2,106.2 L291.6,106.2 L313.0,106.2 L334.4,106.2 L355.8,106.2 L377.2,106.2 L398.7,106.2 L420.1,106.2 L441.5,106.2 L462.9,106.2 L484.3,106.2 L505.8,106.2 L527.2,106.2 L548.6,106.2 L570.0,106.2" fill="none" stroke="#e8743b" stroke-width="2"/>
+<rect x="582" y="63" width="12" height="3" fill="#e8743b"/>
+<text class="tx" x="600" y="68">Naive RSI</text>
+<path d="M56.0,208.0 L77.4,208.0 L98.8,208.0 L120.2,208.0 L141.7,208.0 L163.1,208.0 L184.5,208.0 L205.9,174.4 L227.3,135.5 L248.8,121.9 L270.2,100.9 L291.6,96.7 L313.0,96.7 L334.4,96.7 L355.8,96.7 L377.2,91.4 L398.7,89.3 L420.1,89.3 L441.5,89.3 L462.9,87.2 L484.3,87.2 L505.8,87.2 L527.2,87.2 L548.6,83.1 L570.0,82.0" fill="none" stroke="#19a979" stroke-width="2"/>
+<rect x="582" y="81" width="12" height="3" fill="#19a979"/>
+<text class="tx" x="600" y="86">Budget RSI</text>
+<path d="M56.0,208.0 L77.4,163.9 L98.8,153.4 L120.2,122.9 L141.7,110.3 L163.1,107.2 L184.5,100.9 L205.9,94.6 L227.3,78.8 L248.8,65.2 L270.2,62.1 L291.6,57.8 L313.0,57.8 L334.4,57.8 L355.8,57.8 L377.2,57.8 L398.7,57.8 L420.1,54.7 L441.5,54.7 L462.9,52.6 L484.3,52.6 L505.8,51.6 L527.2,50.5 L548.6,50.5 L570.0,50.5" fill="none" stroke="#a35bd6" stroke-width="2"/>
+<rect x="582" y="99" width="12" height="3" fill="#a35bd6"/>
+<text class="tx" x="600" y="104">SO-RSI</text>
+<path d="M56.0,208.0 L77.4,208.0 L98.8,120.8 L120.2,119.8 L141.7,119.8 L163.1,116.7 L184.5,107.2 L205.9,103.0 L227.3,99.8 L248.8,94.6 L270.2,94.6 L291.6,94.6 L313.0,94.6 L334.4,94.6 L355.8,93.6 L377.2,92.5 L398.7,92.5 L420.1,88.3 L441.5,85.2 L462.9,85.2 L484.3,85.2 L505.8,78.8 L527.2,78.8 L548.6,78.8 L570.0,74.7" fill="none" stroke="#d4a017" stroke-width="2"/>
+<rect x="582" y="117" width="12" height="3" fill="#d4a017"/>
+<text class="tx" x="600" y="122">SwarmRSI</text>
+</svg></div>
+
+<h2>All Section 10 codelabs</h2>
+<div class="scroll"><table><thead><tr><th>Lab</th><th>Codelab</th><th>Measured result (from docs/results)</th><th>Files</th></tr></thead>
+<tbody><tr><td><b>10.01</b><br><span class='tag'>Read a frontier claim</span></td><td>Distinguish claim from evidence</td><td>Reference demo&#x27;s +19 pp gap survives with diagnostics deleted; best seed 81 vs mean 69.2</td><td><a href='../labs/10_01_claim_vs_evidence/README.md'>walkthrough</a> · <a href='../labs/10_01_claim_vs_evidence/lab.py'>code</a></td></tr>
+<tr><td><b>10.02</b><br><span class='tag'>Read a frontier claim</span></td><td>Audit an October 2026 paper (SO-RSI)</td><td>Probes cost 35% of SO-RSI&#x27;s budget (the &#x27;lightweight&#x27; assumption, measured)</td><td><a href='../labs/10_02_audit_paper/README.md'>walkthrough</a> · <a href='../labs/10_02_audit_paper/lab.py'>code</a></td></tr>
+<tr><td><b>10.03</b><br><span class='tag'>Budget RSI</span></td><td>Run Budget RSI</td><td>Held-out after 40 expansions: readout 76.5, parent-rate 73.6, random 69.2</td><td><a href='../labs/10_03_run_budget_rsi/README.md'>walkthrough</a> · <a href='../labs/10_03_run_budget_rsi/lab.py'>code</a></td></tr>
+<tr><td><b>10.04</b><br><span class='tag'>Budget RSI</span></td><td>Analyse the scoring mechanism</td><td>Within-sibling Spearman on strong parents: climb-trained +0.31 vs shifted +0.22; shifted readout loses ~12 held-out instances</td><td><a href='../labs/10_04_analyze_readout/README.md'>walkthrough</a> · <a href='../labs/10_04_analyze_readout/lab.py'>code</a></td></tr>
+<tr><td><b>10.05</b><br><span class='tag'>Budget RSI</span></td><td>Extend the scorer to our task</td><td>Task features + online refit 81.8 vs paper readout 76.2; shuffled-label control 65.8</td><td><a href='../labs/10_05_extend_readout/README.md'>walkthrough</a> · <a href='../labs/10_05_extend_readout/lab.py'>code</a></td></tr>
+<tr><td><b>10.06</b><br><span class='tag'>Second-order RSI</span></td><td>Run SO-RSI</td><td>SO-RSI 93.4 vs Naive RSI 68.9 held-out at equal budget</td><td><a href='../labs/10_06_run_so_rsi/README.md'>walkthrough</a> · <a href='../labs/10_06_run_so_rsi/lab.py'>code</a></td></tr>
+<tr><td><b>10.07</b><br><span class='tag'>Second-order RSI</span></td><td>Analyse diagnostic probes</td><td>Full 93.4; no mechanism map 93.2; probe every failure 83.8; no inquiry 68.9</td><td><a href='../labs/10_07_analyze_probes/README.md'>walkthrough</a> · <a href='../labs/10_07_analyze_probes/lab.py'>code</a></td></tr>
+<tr><td><b>10.08</b><br><span class='tag'>Second-order RSI</span></td><td>Apply SO-RSI to a debugging task</td><td>Anomalies mismatch, opposing, recurrence; probe shows 0 code variants pass all tests, so the test is wrong</td><td><a href='../labs/10_08_apply_debugging/README.md'>walkthrough</a> · <a href='../labs/10_08_apply_debugging/lab.py'>code</a></td></tr>
+<tr><td><b>10.09</b><br><span class='tag'>Scaling &amp; swarms</span></td><td>Compare scaling approaches</td><td>single agent 68.9 · AReaL-RSI 73.6 · SwarmRSI 78.0</td><td><a href='../labs/10_09_compare_scaling/README.md'>walkthrough</a> · <a href='../labs/10_09_compare_scaling/lab.py'>code</a></td></tr>
+<tr><td><b>10.10</b><br><span class='tag'>Scaling &amp; swarms</span></td><td>Leader-follower coordination (AReaL-RSI)</td><td>Shared conditional memory 73.6 vs independent researchers 66.0</td><td><a href='../labs/10_10_leader_follower/README.md'>walkthrough</a> · <a href='../labs/10_10_leader_follower/lab.py'>code</a></td></tr>
+<tr><td><b>10.11</b><br><span class='tag'>Scaling &amp; swarms</span></td><td>Swarm evolution (SwarmRSI)</td><td>Full swarm 78.0; same start for all agents 71.1 (diversity of directions carries the result)</td><td><a href='../labs/10_11_swarm_evolution/README.md'>walkthrough</a> · <a href='../labs/10_11_swarm_evolution/lab.py'>code</a></td></tr>
+<tr><td><b>10.12</b><br><span class='tag'>Adaptive workflows</span></td><td>Compare workflow adaptation</td><td>Naive RSI 68.9 · RSIFlow 77.2 · Self-HPO 78.2</td><td><a href='../labs/10_12_compare_workflows/README.md'>walkthrough</a> · <a href='../labs/10_12_compare_workflows/lab.py'>code</a></td></tr>
+<tr><td><b>10.13</b><br><span class='tag'>Adaptive workflows</span></td><td>RSIFlow meta-agent</td><td>Adaptive meta-agent 76.4 vs static workflow 76.4 (a tie)</td><td><a href='../labs/10_13_rsiflow_meta_agent/README.md'>walkthrough</a> · <a href='../labs/10_13_rsiflow_meta_agent/lab.py'>code</a></td></tr>
+<tr><td><b>10.14</b><br><span class='tag'>Adaptive workflows</span></td><td>Self-HPO alternation</td><td>Gain over seed: policy-only +12.0, harness-only +35.0, joint +47.2</td><td><a href='../labs/10_14_self_hpo/README.md'>walkthrough</a> · <a href='../labs/10_14_self_hpo/lab.py'>code</a></td></tr>
+<tr><td><b>10.15</b><br><span class='tag'>Environments &amp; metrics</span></td><td>Calculate RSI-Index</td><td>RSI-Index (budget 2400): Budget RSI 0.66, SO-RSI 0.86, SwarmRSI 0.74</td><td><a href='../labs/10_15_rsi_index/README.md'>walkthrough</a> · <a href='../labs/10_15_rsi_index/lab.py'>code</a></td></tr>
+<tr><td><b>10.16</b><br><span class='tag'>Environments &amp; metrics</span></td><td>Compare environments (EaaS)</td><td>Services with budget + &#x27;final&#x27; permission; sandbox refuses imports; held-out refused during search</td><td><a href='../labs/10_16_environments/README.md'>walkthrough</a> · <a href='../labs/10_16_environments/lab.py'>code</a></td></tr>
+<tr><td><b>10.17</b><br><span class='tag'>Environments &amp; metrics</span></td><td>Analyse the new metrics</td><td>Steering proxy Spearman +0.97; most learnable family am_rush_ramp</td><td><a href='../labs/10_17_metrics/README.md'>walkthrough</a> · <a href='../labs/10_17_metrics/lab.py'>code</a></td></tr>
+<tr><td><b>10.18</b><br><span class='tag'>Synthesis</span></td><td>Synthesis: three methods head to head</td><td>random search 76.4 · Naive RSI 69.6 · Budget RSI 80.2 · SO-RSI 96.0 · SwarmRSI 85.2</td><td><a href='../labs/10_18_three_method_showdown/README.md'>walkthrough</a> · <a href='../labs/10_18_three_method_showdown/lab.py'>code</a></td></tr></tbody></table></div>
+
+<h2>What the evidence supports, and what it does not</h2>
+<ul>
+<li><b>SO-RSI's gain survives every control we tried.</b> Removing the hand-written mechanism map barely matters, so the gain comes from
+anomaly-gated <i>sweeps on the failing instances</i>. Probing after every failure (no anomaly gate) loses about 10 instances (lab 10.07).</li>
+<li><b>Budget RSI depends on where its labels come from.</b> A readout trained on random-walk parents ranks the strong parents HGM actually expands
+worse, and loses about 12 held-out instances (lab 10.04). Its gain over the parent-rate ablation is small and noisy, as in the paper.</li>
+<li><b>SwarmRSI's result comes from diverse starting hypotheses.</b> Ablating the shared board, recombination or procedure evolution is within noise
+at this budget (lab 10.11).</li>
+<li><b>Negative result:</b> the RSIFlow meta-agent re-routes work but ties a static workflow (lab 10.13). <b>Course demo audit:</b> the reference
+SO-RSI demo hard-codes its success rates (lab 10.01).</li>
+<li>These are laptop adaptations. They preserve each paper's <i>mechanism</i>, not its scale or headline numbers.</li>
+</ul>
+
+<h2>Reproduce</h2>
+<pre>cd assignment5_rsi
+python run_all.py          # all labs + tests, rewrites docs/EXECUTION_LOG.md and this page
+python labs/10_06_run_so_rsi/lab.py   # any single lab
+python -m unittest discover -s tests -v</pre>
+<p class="lede">Unedited output of every lab: <a href="EXECUTION_LOG.md">docs/EXECUTION_LOG.md</a> · Course map:
+<a href="https://github.com/dlmastery/simple-coding-harness/blob/main/COURSE-MAP.md#theme-10">Theme 10</a></p>
+</main></body></html>

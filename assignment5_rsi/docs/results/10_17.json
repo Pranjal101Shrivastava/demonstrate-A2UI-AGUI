@@ -1,0 +1,32 @@
+{
+ "steering_validity": {
+  "spearman": 0.9691998213105955,
+  "winner_steering": 0.7708333333333334,
+  "winner_heldout": 0.78,
+  "winner_overstatement": -0.009166666666666656
+ },
+ "learnability": {
+  "balanced_light": 0.1597222222222221,
+  "balanced_heavy": 0.562932098765432,
+  "ns_dominant": 0.51,
+  "ew_dominant": 0.6197222222222223,
+  "am_rush_ramp": 0.9955555555555555,
+  "stadium_surge": 0.5254320987654321,
+  "night_sparse": 0.13922839506172832,
+  "platoon_pulses": 0.7663888888888888
+ },
+ "swarm_diversity": [
+  2.36,
+  2.61,
+  2.63,
+  2.63,
+  2.63,
+  2.51,
+  2.51,
+  2.68,
+  2.79,
+  2.79,
+  2.79,
+  2.81
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "shared": [
+  74,
+  77,
+  83,
+  72,
+  66,
+  66,
+  72,
+  79
+ ],
+ "independent": [
+  66,
+  66,
+  66,
+  66,
+  66,
+  66,
+  66,
+  66
+ ],
+ "memory_counts": {
+  "asymmetric:unresolved": 16,
+  "asymmetric:resolved": 2,
+  "heavy_balanced:resolved": 2,
+  "heavy_balanced:unresolved": 26,
+  "surge:unresolved": 14,
+  "light_traffic:unresolved": 11
+ }
+}

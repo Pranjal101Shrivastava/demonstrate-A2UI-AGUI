@@ -1,0 +1,26 @@
+{
+ "check_a": {
+  "naive_mean": 30.025,
+  "no_diag_mean": 48.825
+ },
+ "check_b": {
+  "heldout_mean": 69.2,
+  "heldout_std": 7.5,
+  "heldout_all": [
+   81,
+   61,
+   61,
+   73,
+   72,
+   73,
+   68,
+   62,
+   79,
+   62
+  ],
+  "steering_mean": 36.0,
+  "units_mean": 1896
+ },
+ "best_seed": 81,
+ "selection_effect": 5.8
+}

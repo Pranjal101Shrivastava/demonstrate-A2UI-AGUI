@@ -1,0 +1,107 @@
+{
+ "importance": [
+  [
+   "lines_deleted",
+   -0.11104172544301033
+  ],
+  [
+   "branch_delta",
+   -0.35793722208859236
+  ],
+  [
+   "parent_rate",
+   0.64792925061632
+  ],
+  [
+   "lines_added",
+   -0.04557753337606633
+  ],
+  [
+   "consts_changed",
+   -0.17620187208227026
+  ],
+  [
+   "funcs_added",
+   0.187516535850071
+  ],
+  [
+   "const_log_change",
+   -0.10412556335036792
+  ],
+  [
+   "switch_path_delta",
+   -0.01398616222731642
+  ],
+  [
+   "funcs_deleted",
+   -0.011314663767795814
+  ]
+ ],
+ "variants": [
+  {
+   "variant": "8 features, 96 edits (paper)",
+   "spearman": 0.122,
+   "regret": 7.0,
+   "spearman_weak": 0.027,
+   "spearman_strong": 0.311,
+   "regret_strong": 3.5
+  },
+  {
+   "variant": "4 features (lines/funcs only)",
+   "spearman": -0.073,
+   "regret": 9.0,
+   "spearman_weak": -0.265,
+   "spearman_strong": 0.311,
+   "regret_strong": 2.0
+  },
+  {
+   "variant": "parent_rate only (ablation)",
+   "spearman": 0.0,
+   "regret": 7.83,
+   "spearman_weak": 0.0,
+   "spearman_strong": 0.0,
+   "regret_strong": 1.25
+  },
+  {
+   "variant": "8 features, 48 edits",
+   "spearman": 0.162,
+   "regret": 8.25,
+   "spearman_weak": 0.128,
+   "spearman_strong": 0.229,
+   "regret_strong": 3.5
+  },
+  {
+   "variant": "8 features, 24 edits",
+   "spearman": 0.022,
+   "regret": 7.75,
+   "spearman_weak": -0.049,
+   "spearman_strong": 0.165,
+   "regret_strong": 3.5
+  },
+  {
+   "variant": "8 features, SHIFTED scaffold",
+   "spearman": 0.313,
+   "regret": 5.5,
+   "spearman_weak": 0.36,
+   "spearman_strong": 0.22,
+   "regret_strong": 4.75
+  }
+ ],
+ "search": [
+  [
+   "climb scaffold",
+   "76.2 \u00b1 12.4",
+   "97 63 74 83 74 66"
+  ],
+  [
+   "shifted scaffold",
+   "64.3 \u00b1 2.3",
+   "62 66 67 63 62 66"
+  ]
+ ],
+ "validity": {
+  "spearman": 0.12153896584522296,
+  "regret": 7.0,
+  "random_regret": 8.197916666666668
+ }
+}

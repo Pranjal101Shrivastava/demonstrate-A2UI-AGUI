@@ -1,0 +1,583 @@
+{
+ "random search@2400": {
+  "heldout": [
+   62,
+   72,
+   67,
+   78,
+   67
+  ],
+  "steering": [
+   35,
+   36,
+   36,
+   37,
+   35
+  ],
+  "delay": [
+   15.46,
+   15.68,
+   14.51,
+   15.32,
+   15.05
+  ],
+  "rsi_index": [
+   0.49750712250712253,
+   0.6200142450142451,
+   0.555911680911681,
+   0.6819800569800569,
+   0.5986467236467237
+  ],
+  "units": [
+   2400,
+   2400,
+   2400,
+   2400,
+   2400
+  ],
+  "ledger": [
+   {
+    "search": 2400
+   },
+   {
+    "search": 2400
+   },
+   {
+    "search": 2400
+   },
+   {
+    "search": 2400
+   },
+   {
+    "search": 2400
+   }
+  ],
+  "program_seed0": "[starvation_guard+max_cap+pressure] min_green=6, fixed_green=30, max_green=90, pressure_ratio=3.5, starve_limit=120"
+ },
+ "Naive RSI@2400": {
+  "heldout": [
+   81,
+   61,
+   61,
+   73,
+   72
+  ],
+  "steering": [
+   39,
+   32,
+   32,
+   37,
+   37
+  ],
+  "delay": [
+   11.11,
+   11.96,
+   11.96,
+   15.1,
+   12.36
+  ],
+  "rsi_index": [
+   0.7457264957264957,
+   0.4882478632478633,
+   0.4882478632478633,
+   0.6396011396011396,
+   0.618945868945869
+  ],
+  "units": [
+   1728,
+   1872,
+   2016,
+   1008,
+   2160
+  ],
+  "ledger": [
+   {
+    "search": 1728
+   },
+   {
+    "search": 1872
+   },
+   {
+    "search": 2016
+   },
+   {
+    "search": 1008
+   },
+   {
+    "search": 2160
+   }
+  ],
+  "program_seed0": "[skip_empty+actuated] min_green=8, gap_out=1"
+ },
+ "Budget RSI@2400": {
+  "heldout": [
+   83,
+   66,
+   74,
+   83,
+   74
+  ],
+  "steering": [
+   40,
+   32,
+   37,
+   40,
+   37
+  ],
+  "delay": [
+   11.15,
+   15.98,
+   15.71,
+   11.15,
+   15.71
+  ],
+  "rsi_index": [
+   0.7667378917378916,
+   0.5441595441595442,
+   0.6677350427350427,
+   0.7667378917378916,
+   0.6677350427350427
+  ],
+  "units": [
+   2384,
+   2400,
+   2368,
+   2368,
+   2400
+  ],
+  "ledger": [
+   {
+    "readout-labels": 1472,
+    "expansion": 912
+   },
+   {
+    "readout-labels": 1488,
+    "expansion": 912
+   },
+   {
+    "readout-labels": 1216,
+    "expansion": 1152
+   },
+   {
+    "readout-labels": 1264,
+    "expansion": 1104
+   },
+   {
+    "readout-labels": 1200,
+    "expansion": 1200
+   }
+  ],
+  "program_seed0": "[actuated] min_green=4, gap_out=2"
+ },
+ "SO-RSI@2400": {
+  "heldout": [
+   96,
+   97,
+   76,
+   96,
+   96
+  ],
+  "steering": [
+   46,
+   46,
+   39,
+   46,
+   46
+  ],
+  "delay": [
+   11.08,
+   10.76,
+   12.54,
+   10.93,
+   11.17
+  ],
+  "rsi_index": [
+   0.9465811965811967,
+   0.9604700854700855,
+   0.6869658119658121,
+   0.9465811965811967,
+   0.9476495726495727
+  ],
+  "units": [
+   2361,
+   2096,
+   2400,
+   2387,
+   2381
+  ],
+  "ledger": [
+   {
+    "search": 1622,
+    "probe": 739
+   },
+   {
+    "search": 1377,
+    "probe": 719
+   },
+   {
+    "search": 1497,
+    "probe": 903
+   },
+   {
+    "search": 1708,
+    "probe": 679
+   },
+   {
+    "search": 1666,
+    "probe": 715
+   }
+  ],
+  "program_seed0": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=60, starve_limit=50"
+ },
+ "SwarmRSI@2400": {
+  "heldout": [
+   80,
+   83,
+   81,
+   73,
+   62
+  ],
+  "steering": [
+   39,
+   39,
+   39,
+   36,
+   35
+  ],
+  "delay": [
+   11.28,
+   10.72,
+   11.11,
+   15.02,
+   15.46
+  ],
+  "rsi_index": [
+   0.7261396011396011,
+   0.761039886039886,
+   0.7457264957264957,
+   0.6246438746438746,
+   0.49750712250712253
+  ],
+  "units": [
+   2400,
+   2400,
+   2400,
+   2400,
+   2400
+  ],
+  "ledger": [
+   {
+    "search": 2352,
+    "recombination": 48
+   },
+   {
+    "search": 2400,
+    "recombination": 0
+   },
+   {
+    "search": 2400,
+    "recombination": 0
+   },
+   {
+    "search": 2304,
+    "recombination": 96
+   },
+   {
+    "search": 2352,
+    "recombination": 48
+   }
+  ],
+  "program_seed0": "[starvation_guard+skip_empty+actuated] min_green=8, gap_out=2, starve_limit=120"
+ },
+ "random search@4800": {
+  "heldout": [
+   77,
+   72,
+   79,
+   83,
+   71
+  ],
+  "steering": [
+   39,
+   36,
+   37,
+   40,
+   35
+  ],
+  "delay": [
+   14.86,
+   15.68,
+   15.43,
+   10.96,
+   12.35
+  ],
+  "rsi_index": [
+   0.6940883190883191,
+   0.6200142450142451,
+   0.7118945868945868,
+   0.7631766381766382,
+   0.6082621082621082
+  ],
+  "units": [
+   4800,
+   4800,
+   4800,
+   4800,
+   4800
+  ],
+  "ledger": [
+   {
+    "search": 4800
+   },
+   {
+    "search": 4800
+   },
+   {
+    "search": 4800
+   },
+   {
+    "search": 4800
+   },
+   {
+    "search": 4800
+   }
+  ],
+  "program_seed0": "[starvation_guard+skip_empty+pressure] min_green=10, fixed_green=35, pressure_ratio=4.0, starve_limit=120"
+ },
+ "Naive RSI@4800": {
+  "heldout": [
+   81,
+   61,
+   61,
+   73,
+   72
+  ],
+  "steering": [
+   39,
+   32,
+   32,
+   37,
+   37
+  ],
+  "delay": [
+   11.11,
+   11.96,
+   11.96,
+   15.1,
+   12.36
+  ],
+  "rsi_index": [
+   0.7457264957264957,
+   0.4882478632478633,
+   0.4882478632478633,
+   0.6396011396011396,
+   0.618945868945869
+  ],
+  "units": [
+   1728,
+   1872,
+   2016,
+   1008,
+   2160
+  ],
+  "ledger": [
+   {
+    "search": 1728
+   },
+   {
+    "search": 1872
+   },
+   {
+    "search": 2016
+   },
+   {
+    "search": 1008
+   },
+   {
+    "search": 2160
+   }
+  ],
+  "program_seed0": "[skip_empty+actuated] min_green=8, gap_out=1"
+ },
+ "Budget RSI@4800": {
+  "heldout": [
+   97,
+   62,
+   74,
+   94,
+   74
+  ],
+  "steering": [
+   46,
+   35,
+   37,
+   45,
+   37
+  ],
+  "delay": [
+   11.42,
+   15.46,
+   15.71,
+   10.79,
+   15.71
+  ],
+  "rsi_index": [
+   0.9604700854700855,
+   0.49750712250712253,
+   0.6677350427350427,
+   0.9095441595441596,
+   0.6677350427350427
+  ],
+  "units": [
+   4784,
+   4800,
+   4768,
+   4768,
+   4800
+  ],
+  "ledger": [
+   {
+    "readout-labels": 1472,
+    "expansion": 3312
+   },
+   {
+    "readout-labels": 1488,
+    "expansion": 3312
+   },
+   {
+    "readout-labels": 1216,
+    "expansion": 3552
+   },
+   {
+    "readout-labels": 1264,
+    "expansion": 3504
+   },
+   {
+    "readout-labels": 1200,
+    "expansion": 3600
+   }
+  ],
+  "program_seed0": "[max_cap+actuated] min_green=4, gap_out=1, max_green=50"
+ },
+ "SO-RSI@4800": {
+  "heldout": [
+   96,
+   97,
+   94,
+   96,
+   97
+  ],
+  "steering": [
+   46,
+   46,
+   46,
+   46,
+   46
+  ],
+  "delay": [
+   11.08,
+   10.76,
+   11.04,
+   10.93,
+   10.76
+  ],
+  "rsi_index": [
+   0.9465811965811967,
+   0.9604700854700855,
+   0.9095441595441596,
+   0.9465811965811967,
+   0.9604700854700855
+  ],
+  "units": [
+   2750,
+   2096,
+   4768,
+   2989,
+   4334
+  ],
+  "ledger": [
+   {
+    "search": 1890,
+    "probe": 860
+   },
+   {
+    "search": 1377,
+    "probe": 719
+   },
+   {
+    "search": 3012,
+    "probe": 1756
+   },
+   {
+    "search": 2005,
+    "probe": 984
+   },
+   {
+    "search": 2873,
+    "probe": 1461
+   }
+  ],
+  "program_seed0": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=60, starve_limit=50"
+ },
+ "SwarmRSI@4800": {
+  "heldout": [
+   81,
+   96,
+   96,
+   81,
+   72
+  ],
+  "steering": [
+   39,
+   46,
+   46,
+   39,
+   37
+  ],
+  "delay": [
+   11.11,
+   11.67,
+   11.18,
+   11.11,
+   12.36
+  ],
+  "rsi_index": [
+   0.7457264957264957,
+   0.9476495726495727,
+   0.9476495726495727,
+   0.7457264957264957,
+   0.618945868945869
+  ],
+  "units": [
+   4800,
+   4800,
+   4800,
+   4800,
+   4800
+  ],
+  "ledger": [
+   {
+    "search": 4752,
+    "recombination": 48
+   },
+   {
+    "search": 4704,
+    "recombination": 96
+   },
+   {
+    "search": 4704,
+    "recombination": 96
+   },
+   {
+    "search": 4656,
+    "recombination": 144
+   },
+   {
+    "search": 4752,
+    "recombination": 48
+   }
+  ],
+  "program_seed0": "[starvation_guard+skip_empty+actuated] min_green=8, gap_out=1, starve_limit=120"
+ },
+ "seed_heldout": 31
+}

@@ -1,0 +1,96 @@
+{
+ "anomaly_counts": {
+  "recurrence": 385,
+  "opposing": 13,
+  "mismatch": 13
+ },
+ "conclusions": {
+  "recurrence": {
+   "direction_probe: step size too small: jump directly": 21,
+   "structure_probe: dominant failure signature = wait": 12,
+   "structure_probe: dominant failure signature = delay_heavy": 307,
+   "direction_probe: parameter exhausted for this incumbent": 24,
+   "mechanism_probe: constant was wrong": 7,
+   "mechanism_probe: mechanism does not help here": 11
+  },
+  "opposing": {
+   "structure_probe: dominant failure signature = wait": 4,
+   "structure_probe: dominant failure signature = delay_heavy": 9
+  },
+  "mismatch": {
+   "mechanism_probe: constant was wrong": 5,
+   "mechanism_probe: mechanism does not help here": 5,
+   "structure_probe: dominant failure signature = delay_heavy": 3
+  }
+ },
+ "edit_sources": {
+  "explore": [
+   622,
+   55
+  ],
+  "probe": [
+   56,
+   23
+  ]
+ },
+ "ablations": {
+  "SO-RSI (full)": [
+   96,
+   97,
+   76,
+   96,
+   96,
+   96,
+   95,
+   95
+  ],
+  "no mechanism map": [
+   94,
+   97,
+   76,
+   96,
+   97,
+   96,
+   95,
+   95
+  ],
+  "gate = always (probe every failure)": [
+   95,
+   91,
+   72,
+   69,
+   95,
+   85,
+   69,
+   94
+  ],
+  "gate = never (no inquiry)": [
+   81,
+   61,
+   61,
+   73,
+   72,
+   73,
+   68,
+   62
+  ]
+ },
+ "memory_rounds": {
+  "round 2 WITHOUT memory": [
+   93,
+   72,
+   95,
+   72,
+   69,
+   95
+  ],
+  "round 2 WITH round-1 memory": [
+   96,
+   92,
+   93,
+   72,
+   73,
+   96
+  ]
+ }
+}

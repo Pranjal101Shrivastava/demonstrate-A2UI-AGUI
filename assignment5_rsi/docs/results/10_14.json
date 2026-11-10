@@ -1,0 +1,202 @@
+{
+ "results": {
+  "policy_only": [
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43
+  ],
+  "harness_only": [
+   66,
+   66,
+   66,
+   66,
+   66,
+   66,
+   66,
+   66
+  ],
+  "joint": [
+   79,
+   79,
+   79,
+   79,
+   79,
+   79,
+   73,
+   79
+  ]
+ },
+ "seed_heldout": 31,
+ "gains": {
+  "policy": 12.0,
+  "harness": 35.0,
+  "joint": 47.25
+ },
+ "trace_seed0": [
+  {
+   "step": "H",
+   "hard_set": 32,
+   "proposal": "add pressure",
+   "adopted": true,
+   "units": 256,
+   "best": 32
+  },
+  {
+   "step": "P",
+   "hard_set": 16,
+   "proposal": "[pressure] min_green=6, fixed_green=35, pressure_ratio=4.5",
+   "adopted": true,
+   "units": 496,
+   "best": 36
+  },
+  {
+   "step": "H",
+   "hard_set": 12,
+   "proposal": "add actuated",
+   "adopted": false,
+   "units": 624,
+   "best": 36
+  },
+  {
+   "step": "P",
+   "hard_set": 12,
+   "proposal": "[pressure] min_green=8, fixed_green=40, pressure_ratio=4.5",
+   "adopted": false,
+   "units": 852,
+   "best": 36
+  },
+  {
+   "step": "H",
+   "hard_set": 12,
+   "proposal": "add actuated",
+   "adopted": false,
+   "units": 872,
+   "best": 36
+  },
+  {
+   "step": "P",
+   "hard_set": 12,
+   "proposal": "[pressure] min_green=12, fixed_green=45, pressure_ratio=5.0",
+   "adopted": false,
+   "units": 1064,
+   "best": 36
+  },
+  {
+   "step": "H",
+   "hard_set": 12,
+   "proposal": "add actuated",
+   "adopted": false,
+   "units": 1084,
+   "best": 36
+  },
+  {
+   "step": "P",
+   "hard_set": 12,
+   "proposal": "[pressure] min_green=8, fixed_green=40, pressure_ratio=4.5",
+   "adopted": false,
+   "units": 1142,
+   "best": 36
+  },
+  {
+   "step": "H",
+   "hard_set": 12,
+   "proposal": "add actuated",
+   "adopted": false,
+   "units": 1162,
+   "best": 36
+  },
+  {
+   "step": "P",
+   "hard_set": 12,
+   "proposal": "[pressure] min_green=12, fixed_green=40, pressure_ratio=4.5",
+   "adopted": true,
+   "units": 1299,
+   "best": 37
+  },
+  {
+   "step": "H",
+   "hard_set": 11,
+   "proposal": "add skip_empty",
+   "adopted": false,
+   "units": 1423,
+   "best": 37
+  },
+  {
+   "step": "P",
+   "hard_set": 11,
+   "proposal": "[pressure] min_green=10, fixed_green=35, pressure_ratio=4.5",
+   "adopted": true,
+   "units": 1623,
+   "best": 40
+  },
+  {
+   "step": "H",
+   "hard_set": 8,
+   "proposal": "add skip_empty",
+   "adopted": true,
+   "units": 1735,
+   "best": 40
+  },
+  {
+   "step": "P",
+   "hard_set": 8,
+   "proposal": "[skip_empty+pressure] min_green=8, fixed_green=40, pressure_ratio=4.5",
+   "adopted": false,
+   "units": 1913,
+   "best": 40
+  },
+  {
+   "step": "H",
+   "hard_set": 8,
+   "proposal": "add starvation_guard",
+   "adopted": false,
+   "units": 1977,
+   "best": 40
+  },
+  {
+   "step": "P",
+   "hard_set": 8,
+   "proposal": "[skip_empty+pressure] min_green=8, fixed_green=35, pressure_ratio=4.5",
+   "adopted": false,
+   "units": 2097,
+   "best": 40
+  },
+  {
+   "step": "H",
+   "hard_set": 8,
+   "proposal": "remove skip_empty",
+   "adopted": false,
+   "units": 2117,
+   "best": 40
+  },
+  {
+   "step": "P",
+   "hard_set": 8,
+   "proposal": "[skip_empty+pressure] min_green=6, fixed_green=45, pressure_ratio=4.5",
+   "adopted": false,
+   "units": 2280,
+   "best": 40
+  },
+  {
+   "step": "H",
+   "hard_set": 8,
+   "proposal": "remove skip_empty",
+   "adopted": false,
+   "units": 2300,
+   "best": 40
+  },
+  {
+   "step": "P",
+   "hard_set": 8,
+   "proposal": "[skip_empty+pressure] min_green=8, fixed_green=45, pressure_ratio=4.5",
+   "adopted": false,
+   "units": 2392,
+   "best": 40
+  }
+ ]
+}

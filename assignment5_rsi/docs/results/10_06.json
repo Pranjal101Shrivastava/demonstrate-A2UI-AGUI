@@ -1,0 +1,808 @@
+{
+ "naive": [
+  {
+   "seed": 0,
+   "method": "naive_rsi",
+   "steering": 39,
+   "heldout": 81,
+   "heldout_delay": 11.11,
+   "units": 1728,
+   "ledger": {
+    "search": 1728
+   },
+   "program": "[skip_empty+actuated] min_green=8, gap_out=1",
+   "seconds": 1.04,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.7692307692307693,
+    "ns_dominant": 0.6153846153846154,
+    "ew_dominant": 0.9230769230769231,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.16666666666666666,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 1,
+   "method": "naive_rsi",
+   "steering": 32,
+   "heldout": 61,
+   "heldout_delay": 11.96,
+   "units": 1872,
+   "ledger": {
+    "search": 1872
+   },
+   "program": "[skip_empty+pressure+actuated] min_green=6, gap_out=5, pressure_ratio=4.5",
+   "seconds": 1.35,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.46153846153846156,
+    "ns_dominant": 0.15384615384615385,
+    "ew_dominant": 0.23076923076923078,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.08333333333333333,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 2,
+   "method": "naive_rsi",
+   "steering": 32,
+   "heldout": 61,
+   "heldout_delay": 11.96,
+   "units": 2016,
+   "ledger": {
+    "search": 2016
+   },
+   "program": "[skip_empty+pressure+actuated] min_green=6, gap_out=5, pressure_ratio=4.5",
+   "seconds": 1.33,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.46153846153846156,
+    "ns_dominant": 0.15384615384615385,
+    "ew_dominant": 0.23076923076923078,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.08333333333333333,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 3,
+   "method": "naive_rsi",
+   "steering": 37,
+   "heldout": 73,
+   "heldout_delay": 15.1,
+   "units": 1008,
+   "ledger": {
+    "search": 1008
+   },
+   "program": "[skip_empty+pressure] min_green=8, fixed_green=35, pressure_ratio=5.0",
+   "seconds": 0.72,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.46153846153846156,
+    "ns_dominant": 0.6153846153846154,
+    "ew_dominant": 0.5384615384615384,
+    "am_rush_ramp": 0.9166666666666666,
+    "stadium_surge": 0.3333333333333333,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 4,
+   "method": "naive_rsi",
+   "steering": 37,
+   "heldout": 72,
+   "heldout_delay": 12.36,
+   "units": 2160,
+   "ledger": {
+    "search": 2160
+   },
+   "program": "[skip_empty+pressure+actuated] min_green=10, gap_out=3, pressure_ratio=4.5",
+   "seconds": 1.39,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.6153846153846154,
+    "ns_dominant": 0.5384615384615384,
+    "ew_dominant": 0.6153846153846154,
+    "am_rush_ramp": 0.8333333333333334,
+    "stadium_surge": 0.16666666666666666,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 5,
+   "method": "naive_rsi",
+   "steering": 37,
+   "heldout": 73,
+   "heldout_delay": 15.1,
+   "units": 2400,
+   "ledger": {
+    "search": 2400
+   },
+   "program": "[starvation_guard+skip_empty+pressure] min_green=8, fixed_green=35, pressure_ratio=5.0, starve_limit=120",
+   "seconds": 1.76,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.46153846153846156,
+    "ns_dominant": 0.6153846153846154,
+    "ew_dominant": 0.5384615384615384,
+    "am_rush_ramp": 0.9166666666666666,
+    "stadium_surge": 0.3333333333333333,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 6,
+   "method": "naive_rsi",
+   "steering": 36,
+   "heldout": 68,
+   "heldout_delay": 15.65,
+   "units": 1584,
+   "ledger": {
+    "search": 1584
+   },
+   "program": "[starvation_guard+skip_empty+pressure] min_green=6, fixed_green=30, pressure_ratio=5.0, starve_limit=110",
+   "seconds": 1.28,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.46153846153846156,
+    "ns_dominant": 0.46153846153846156,
+    "ew_dominant": 0.6153846153846154,
+    "am_rush_ramp": 0.8333333333333334,
+    "stadium_surge": 0.16666666666666666,
+    "night_sparse": 0.9166666666666666,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 7,
+   "method": "naive_rsi",
+   "steering": 35,
+   "heldout": 62,
+   "heldout_delay": 15.2,
+   "units": 2352,
+   "ledger": {
+    "search": 2352
+   },
+   "program": "[skip_empty+pressure] min_green=6, fixed_green=30, pressure_ratio=3.5",
+   "seconds": 1.55,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.3076923076923077,
+    "ns_dominant": 0.15384615384615385,
+    "ew_dominant": 0.38461538461538464,
+    "am_rush_ramp": 0.9166666666666666,
+    "stadium_surge": 0.3333333333333333,
+    "night_sparse": 0.9166666666666666,
+    "platoon_pulses": 1.0
+   }
+  }
+ ],
+ "so_rsi": [
+  {
+   "seed": 0,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 11.08,
+   "units": 2361,
+   "ledger": {
+    "search": 1622,
+    "probe": 739
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=60, starve_limit=50",
+   "seconds": 1.72,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 1,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 97,
+   "heldout_delay": 10.76,
+   "units": 2096,
+   "ledger": {
+    "search": 1377,
+    "probe": 719
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=60, starve_limit=60",
+   "seconds": 1.48,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.9166666666666666,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 2,
+   "method": "so_rsi",
+   "steering": 39,
+   "heldout": 76,
+   "heldout_delay": 12.54,
+   "units": 2400,
+   "ledger": {
+    "search": 1497,
+    "probe": 903
+   },
+   "program": "[max_cap+pressure+actuated] min_green=6, gap_out=5, max_green=40, pressure_ratio=5.0",
+   "seconds": 1.61,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.5384615384615384,
+    "ns_dominant": 0.46153846153846156,
+    "ew_dominant": 0.5384615384615384,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.5833333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 3,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 10.93,
+   "units": 2387,
+   "ledger": {
+    "search": 1708,
+    "probe": 679
+   },
+   "program": "[max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=50",
+   "seconds": 1.51,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 4,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 11.17,
+   "units": 2381,
+   "ledger": {
+    "search": 1666,
+    "probe": 715
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=8, gap_out=1, max_green=90, starve_limit=60",
+   "seconds": 1.51,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.7692307692307693,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.9166666666666666,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 5,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 10.93,
+   "units": 2384,
+   "ledger": {
+    "search": 1638,
+    "probe": 746
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=50, starve_limit=120",
+   "seconds": 1.74,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 6,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 95,
+   "heldout_delay": 11.68,
+   "units": 2351,
+   "ledger": {
+    "search": 1568,
+    "probe": 783
+   },
+   "program": "[starvation_guard+max_cap+actuated] min_green=8, gap_out=1, max_green=60, starve_limit=110",
+   "seconds": 1.45,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.7692307692307693,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 7,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 95,
+   "heldout_delay": 11.68,
+   "units": 1666,
+   "ledger": {
+    "search": 798,
+    "probe": 868
+   },
+   "program": "[max_cap+actuated] min_green=8, gap_out=1, max_green=60",
+   "seconds": 1.2,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.7692307692307693,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  }
+ ],
+ "naive_anomalies_seed0": {
+  "recurrence": 269,
+  "opposing": 40,
+  "mismatch": 51
+ },
+ "findings_seed0": [
+  {
+   "step": 5,
+   "anomaly": "recurrence",
+   "probe": "direction_probe(min_green)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set min_green=4",
+     7
+    ],
+    [
+     "set min_green=10",
+     6
+    ],
+    [
+     "set min_green=16",
+     6
+    ],
+    [
+     "set min_green=24",
+     6
+    ]
+   ],
+   "conclusion": "step size too small: jump directly"
+  },
+  {
+   "step": 7,
+   "anomaly": "opposing",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "add max_cap (max_green=60)",
+     15
+    ],
+    [
+     "set starve_limit=70",
+     6
+    ],
+    [
+     "add max_cap (max_green=90)",
+     6
+    ],
+    [
+     "add max_cap (max_green=20)",
+     6
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 23, 'delay_light': 0, 'delay_heavy': 8}"
+  },
+  {
+   "step": 9,
+   "anomaly": "mismatch",
+   "probe": "mechanism_probe(pressure)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "add pressure (pressure_ratio=5.0)",
+     10
+    ],
+    [
+     "add pressure (pressure_ratio=3.5)",
+     9
+    ],
+    [
+     "add pressure (pressure_ratio=2.5)",
+     6
+    ],
+    [
+     "add pressure (pressure_ratio=1.0)",
+     0
+    ]
+   ],
+   "conclusion": "constant was wrong"
+  },
+  {
+   "step": 16,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=20",
+     7
+    ],
+    [
+     "set starve_limit=70",
+     6
+    ],
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set starve_limit=20",
+     3
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 8, 'delay_light': 0, 'delay_heavy': 6}"
+  },
+  {
+   "step": 18,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set starve_limit=70",
+     6
+    ],
+    [
+     "set max_green=90",
+     4
+    ],
+    [
+     "set starve_limit=20",
+     3
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 8, 'delay_light': 0, 'delay_heavy': 6}; no mechanism helped"
+  },
+  {
+   "step": 19,
+   "anomaly": "recurrence",
+   "probe": "direction_probe(starve_limit)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set starve_limit=40",
+     10
+    ],
+    [
+     "set starve_limit=100",
+     6
+    ],
+    [
+     "set starve_limit=70",
+     6
+    ],
+    [
+     "set starve_limit=20",
+     1
+    ]
+   ],
+   "conclusion": "step size too small: jump directly"
+  },
+  {
+   "step": 25,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(delay_heavy)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set gap_out=1",
+     10
+    ],
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set gap_out=5",
+     6
+    ],
+    [
+     "add pressure (pressure_ratio=5.0)",
+     6
+    ]
+   ],
+   "conclusion": "dominant failure signature = delay_heavy {'wait': 6, 'delay_light': 0, 'delay_heavy': 9}"
+  },
+  {
+   "step": 29,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set starve_limit=70",
+     5
+    ],
+    [
+     "set starve_limit=120",
+     5
+    ],
+    [
+     "set max_green=20",
+     5
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}; no mechanism helped"
+  },
+  {
+   "step": 31,
+   "anomaly": "recurrence",
+   "probe": "direction_probe(max_green)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=40",
+     6
+    ],
+    [
+     "set max_green=70",
+     6
+    ],
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set max_green=20",
+     2
+    ]
+   ],
+   "conclusion": "step size too small: jump directly"
+  },
+  {
+   "step": 33,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set starve_limit=70",
+     6
+    ],
+    [
+     "set starve_limit=120",
+     6
+    ],
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set max_green=20",
+     4
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}"
+  },
+  {
+   "step": 39,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set starve_limit=120",
+     6
+    ],
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set max_green=20",
+     5
+    ],
+    [
+     "set starve_limit=20",
+     4
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}"
+  },
+  {
+   "step": 41,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set max_green=20",
+     4
+    ],
+    [
+     "set starve_limit=20",
+     1
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}; no mechanism helped"
+  },
+  {
+   "step": 42,
+   "anomaly": "recurrence",
+   "probe": "direction_probe(starve_limit)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set starve_limit=100",
+     6
+    ],
+    [
+     "set starve_limit=40",
+     6
+    ],
+    [
+     "set starve_limit=20",
+     1
+    ]
+   ],
+   "conclusion": "step size too small: jump directly"
+  },
+  {
+   "step": 45,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=90",
+     6
+    ],
+    [
+     "set max_green=20",
+     3
+    ],
+    [
+     "set starve_limit=20",
+     2
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}"
+  },
+  {
+   "step": 48,
+   "anomaly": "recurrence",
+   "probe": "direction_probe(starve_limit)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set starve_limit=40",
+     5
+    ],
+    [
+     "set starve_limit=20",
+     1
+    ]
+   ],
+   "conclusion": "parameter exhausted for this incumbent"
+  },
+  {
+   "step": 49,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=20",
+     4
+    ],
+    [
+     "set starve_limit=20",
+     2
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}; no mechanism helped"
+  },
+  {
+   "step": 53,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=20",
+     5
+    ],
+    [
+     "set starve_limit=20",
+     5
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}; no mechanism helped"
+  },
+  {
+   "step": 54,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=20",
+     4
+    ],
+    [
+     "set starve_limit=20",
+     2
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}; no mechanism helped"
+  },
+  {
+   "step": 55,
+   "anomaly": "recurrence",
+   "probe": "structure_probe(wait)",
+   "incumbent_probe_score": 6,
+   "evidence": [
+    [
+     "set max_green=20",
+     5
+    ],
+    [
+     "set starve_limit=20",
+     1
+    ]
+   ],
+   "conclusion": "dominant failure signature = wait {'wait': 2, 'delay_light': 0, 'delay_heavy': 2}; no mechanism helped"
+  }
+ ]
+}

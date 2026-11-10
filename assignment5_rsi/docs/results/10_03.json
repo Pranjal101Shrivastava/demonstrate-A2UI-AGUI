@@ -1,0 +1,192 @@
+{
+ "coefficients": {
+  "bias": 0.6225278760301307,
+  "parent_rate": 0.64792925061632,
+  "lines_added": -0.04557753337606633,
+  "lines_deleted": -0.11104172544301033,
+  "funcs_added": 0.187516535850071,
+  "funcs_deleted": -0.011314663767795814,
+  "branch_delta": -0.35793722208859236,
+  "switch_path_delta": -0.01398616222731642,
+  "consts_changed": -0.17620187208227026,
+  "const_log_change": -0.10412556335036792
+ },
+ "results": {
+  "readout": [
+   {
+    "seed": 0,
+    "steering": 46,
+    "heldout": 97,
+    "spearman": 0.7460000639863078,
+    "units": 1968
+   },
+   {
+    "seed": 1,
+    "steering": 33,
+    "heldout": 63,
+    "spearman": -0.17283358900687099,
+    "units": 1968
+   },
+   {
+    "seed": 2,
+    "steering": 37,
+    "heldout": 74,
+    "spearman": 0.3372644083165818,
+    "units": 1968
+   },
+   {
+    "seed": 3,
+    "steering": 40,
+    "heldout": 83,
+    "spearman": 0.42578064552363803,
+    "units": 1968
+   },
+   {
+    "seed": 4,
+    "steering": 37,
+    "heldout": 74,
+    "spearman": 0.408944305102704,
+    "units": 1968
+   },
+   {
+    "seed": 5,
+    "steering": 32,
+    "heldout": 66,
+    "spearman": 0.040992263568304724,
+    "units": 1968
+   },
+   {
+    "seed": 6,
+    "steering": 37,
+    "heldout": 72,
+    "spearman": 0.4426710075433549,
+    "units": 1968
+   },
+   {
+    "seed": 7,
+    "steering": 40,
+    "heldout": 83,
+    "spearman": 0.44982721385880364,
+    "units": 1968
+   }
+  ],
+  "parent_rate": [
+   {
+    "seed": 0,
+    "steering": 36,
+    "heldout": 72,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 1,
+    "steering": 36,
+    "heldout": 76,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 2,
+    "steering": 32,
+    "heldout": 61,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 3,
+    "steering": 40,
+    "heldout": 79,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 4,
+    "steering": 40,
+    "heldout": 83,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 5,
+    "steering": 35,
+    "heldout": 67,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 6,
+    "steering": 40,
+    "heldout": 79,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 7,
+    "steering": 36,
+    "heldout": 72,
+    "spearman": null,
+    "units": 1968
+   }
+  ],
+  "random": [
+   {
+    "seed": 0,
+    "steering": 34,
+    "heldout": 66,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 1,
+    "steering": 34,
+    "heldout": 66,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 2,
+    "steering": 31,
+    "heldout": 69,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 3,
+    "steering": 35,
+    "heldout": 74,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 4,
+    "steering": 34,
+    "heldout": 74,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 5,
+    "steering": 35,
+    "heldout": 67,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 6,
+    "steering": 33,
+    "heldout": 69,
+    "spearman": null,
+    "units": 1968
+   },
+   {
+    "seed": 7,
+    "steering": 33,
+    "heldout": 69,
+    "spearman": null,
+    "units": 1968
+   }
+  ]
+ },
+ "seed_heldout": 31,
+ "readout_label_units": 1472
+}

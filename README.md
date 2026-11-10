@@ -1,3 +1,10 @@
+> **Assignment 5 (RSI, Section 10 Research Studio)** is in [`assignment5_rsi/`](assignment5_rsi/):
+> *SignalForge*, a self-improving traffic-signal controller. It contains all 17 Section-10 codelabs plus a synthesis lab,
+> and compares three October 2026 RSI methods (Budget RSI, SO-RSI, SwarmRSI) head to head.
+> Website: [`assignment5_rsi/docs/index.html`](assignment5_rsi/docs/index.html) · execution log:
+> [`assignment5_rsi/docs/EXECUTION_LOG.md`](assignment5_rsi/docs/EXECUTION_LOG.md).
+> The Assignment 4 (GenUX) material below is unchanged.
+
 # GenUX: A2UI · AG-UI · MCP Apps · json-render · OpenUI · Harness integration
 
 **Assignment 4 (GenUX)**: runnable examples of six generative-UI technologies, each in all four generation modes

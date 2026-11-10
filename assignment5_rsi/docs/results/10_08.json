@@ -1,0 +1,94 @@
+{
+ "trace": [
+  {
+   "op": [
+    "decrease",
+    "lost"
+   ],
+   "desc": "lost 2 -> 1 (cars start sooner)",
+   "delta": 0,
+   "accepted": false,
+   "expected": 1.0,
+   "n": 30,
+   "anomalies": []
+  },
+  {
+   "op": [
+    "increase",
+    "lost"
+   ],
+   "desc": "lost 1 -> 2 (T2 broke, revert)",
+   "delta": 0,
+   "accepted": false,
+   "expected": 1.0,
+   "n": 29,
+   "anomalies": [
+    "opposing"
+   ]
+  },
+  {
+   "op": [
+    "add",
+    "range+1"
+   ],
+   "desc": "range(green) -> range(green + 1)",
+   "delta": 0,
+   "accepted": false,
+   "expected": 1.0,
+   "n": 30,
+   "anomalies": []
+  },
+  {
+   "op": [
+    "decrease",
+    "headway"
+   ],
+   "desc": "headway 2 -> 1 (more throughput)",
+   "delta": -1,
+   "accepted": false,
+   "expected": 1.0,
+   "n": 58,
+   "anomalies": [
+    "mismatch"
+   ]
+  },
+  {
+   "op": [
+    "decrease",
+    "lost"
+   ],
+   "desc": "lost 2 -> 1 again (maybe T2 is wrong)",
+   "delta": 0,
+   "accepted": false,
+   "expected": 1.0,
+   "n": 30,
+   "anomalies": [
+    "recurrence",
+    "opposing"
+   ]
+  },
+  {
+   "op": [
+    "increase",
+    "headway"
+   ],
+   "desc": "headway 1 -> 2 (revert)",
+   "delta": 0,
+   "accepted": false,
+   "expected": 1.0,
+   "n": 29,
+   "anomalies": [
+    "opposing"
+   ]
+  }
+ ],
+ "anomalies": [
+  "mismatch",
+  "opposing",
+  "recurrence"
+ ],
+ "variants_passing_all": 0,
+ "culprit": [
+  "T1 60 s green -> 30 departures"
+ ]
+}

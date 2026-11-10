@@ -1,0 +1,197 @@
+{
+ "probe_share_pct": 34.80020525777519,
+ "runs": [
+  {
+   "seed": 0,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 11.08,
+   "units": 2361,
+   "ledger": {
+    "search": 1622,
+    "probe": 739
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=60, starve_limit=50",
+   "seconds": 1.45,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 1,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 97,
+   "heldout_delay": 10.76,
+   "units": 2096,
+   "ledger": {
+    "search": 1377,
+    "probe": 719
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=60, starve_limit=60",
+   "seconds": 1.29,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.9166666666666666,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 2,
+   "method": "so_rsi",
+   "steering": 39,
+   "heldout": 76,
+   "heldout_delay": 12.54,
+   "units": 2400,
+   "ledger": {
+    "search": 1497,
+    "probe": 903
+   },
+   "program": "[max_cap+pressure+actuated] min_green=6, gap_out=5, max_green=40, pressure_ratio=5.0",
+   "seconds": 1.45,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.5384615384615384,
+    "ns_dominant": 0.46153846153846156,
+    "ew_dominant": 0.5384615384615384,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.5833333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 3,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 10.93,
+   "units": 2387,
+   "ledger": {
+    "search": 1708,
+    "probe": 679
+   },
+   "program": "[max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=50",
+   "seconds": 1.51,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 4,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 11.17,
+   "units": 2381,
+   "ledger": {
+    "search": 1666,
+    "probe": 715
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=8, gap_out=1, max_green=90, starve_limit=60",
+   "seconds": 1.51,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.7692307692307693,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.9166666666666666,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 5,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 96,
+   "heldout_delay": 10.93,
+   "units": 2384,
+   "ledger": {
+    "search": 1638,
+    "probe": 746
+   },
+   "program": "[starvation_guard+max_cap+skip_empty+actuated] min_green=4, gap_out=1, max_green=50, starve_limit=120",
+   "seconds": 1.46,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.8461538461538461,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 6,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 95,
+   "heldout_delay": 11.68,
+   "units": 2351,
+   "ledger": {
+    "search": 1568,
+    "probe": 783
+   },
+   "program": "[starvation_guard+max_cap+actuated] min_green=8, gap_out=1, max_green=60, starve_limit=110",
+   "seconds": 1.41,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.7692307692307693,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  },
+  {
+   "seed": 7,
+   "method": "so_rsi",
+   "steering": 46,
+   "heldout": 95,
+   "heldout_delay": 11.68,
+   "units": 1666,
+   "ledger": {
+    "search": 798,
+    "probe": 868
+   },
+   "program": "[max_cap+actuated] min_green=8, gap_out=1, max_green=60",
+   "seconds": 0.98,
+   "heldout_by_family": {
+    "balanced_light": 1.0,
+    "balanced_heavy": 0.7692307692307693,
+    "ns_dominant": 1.0,
+    "ew_dominant": 1.0,
+    "am_rush_ramp": 1.0,
+    "stadium_surge": 0.8333333333333334,
+    "night_sparse": 1.0,
+    "platoon_pulses": 1.0
+   }
+  }
+ ]
+}
